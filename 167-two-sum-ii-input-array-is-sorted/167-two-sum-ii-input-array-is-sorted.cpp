@@ -2,12 +2,17 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) 
     {
-        for (int i = 0; i < nums.size(); i++)
+        int i = 0;
+        int j = nums.size() - 1;
+        
+        while (i < j)
         {
-            int other = upper_bound(nums.begin() + i, nums.end(), target - nums[i]) - nums.begin() - 1;
+            int sum = nums[i] + nums[j];
             
-            if (nums[other] == target - nums[i]) return {i+1, other+1};
-        }   
+            if (sum < target) i++;
+            else if (sum > target) j--;
+            else return {i+1, j+1};
+        }
         
         return {-1, -1};
     }
