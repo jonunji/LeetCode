@@ -12,8 +12,10 @@ public:
                 
                 if (matrix[i][mid] < target)
                     low = mid + 1;
+                
                 else if (matrix[i][mid] > target)
                     high = mid - 1;
+                
                 else
                     return true;
             }
