@@ -17,7 +17,7 @@ public:
                     high = mid - 1;
                 
                 else
-                    return true;
+                    return true; 
             }
         }
         
