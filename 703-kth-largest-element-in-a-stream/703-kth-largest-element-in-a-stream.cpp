@@ -7,9 +7,13 @@ public:
     KthLargest(int k, vector<int>& nums) 
     {
         size = k;
+        
         for (int val : nums)
         {
             minHeap.push(val);
+            
+            // limit minHeap to k elements, so kth largest is the 
+            // smallest in a minHeap of size k
             if (minHeap.size() > k) minHeap.pop();
         }
     }
