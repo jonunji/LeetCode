@@ -5,13 +5,10 @@ public:
         priority_queue<int> pq(begin(A), end(A));
         while (pq.size() > 1)
         {
-            int x = pq.top();
-            pq.pop();
+            int y = pq.top(); pq.pop();
+            int x = pq.top(); pq.pop();
             
-            x = abs(x - pq.top());
-            pq.pop();
-            
-            pq.push(x);
+            if (x != y) pq.push(y - x);
         }
         
         return pq.empty() ? 0 : pq.top();
