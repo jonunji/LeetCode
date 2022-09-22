@@ -2,7 +2,7 @@ class Solution {
 public:
     int climbStairs(int n) 
     {
-        vector<int> arr(2);
+        vector<int> arr(2); 
         arr[0] = 1;
         arr[1] = 2;
         
