@@ -20,8 +20,8 @@ public:
         {
             ListNode* next = head->next;
             head->next = prev;
-            prev = head;
             
+            prev = head;
             head = next;
         }
         
