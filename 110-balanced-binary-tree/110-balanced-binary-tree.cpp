@@ -12,7 +12,7 @@
 class Solution {
 public:
     bool isBalanced(TreeNode* root) 
-    {
+    { 
         bool res = true;
         dfs(root, res); 
         return res;
