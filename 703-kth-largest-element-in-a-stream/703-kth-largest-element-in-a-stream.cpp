@@ -1,12 +1,12 @@
 class KthLargest {
 public:
     
-    int size;
+    int K;
     priority_queue<int, vector<int>, greater<int>> minHeap;
     
     KthLargest(int k, vector<int>& nums) 
     {
-        size = k;
+        K = k;
         
         for (int val : nums)
         {
@@ -21,7 +21,7 @@ public:
     int add(int val) 
     {
         minHeap.push(val);
-        if (minHeap.size() > size) minHeap.pop();
+        if (minHeap.size() > K) minHeap.pop();
         return minHeap.top();
     }
 };
