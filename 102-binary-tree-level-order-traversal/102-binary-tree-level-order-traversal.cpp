@@ -22,13 +22,16 @@ public:
         {
             vector<int> currLevel;
             
+            // use NULL as our marker to know when we switch levels
             q.push(NULL);
             
             while (q.front())
             {
+                // add the current node to our list
                 TreeNode* curr = q.front();
                 currLevel.push_back(curr->val);
                 
+                // push children                 
                 if (curr->left)  q.push(curr->left);
                 if (curr->right) q.push(curr->right);
                 
