@@ -19,7 +19,7 @@ public:
     
     void flip(TreeNode* root)
     {
-        if (!root) return;
+        if (!root) return; 
         
         flip(root->left);
         flip(root->right);
