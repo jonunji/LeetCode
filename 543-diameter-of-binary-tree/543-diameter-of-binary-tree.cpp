@@ -13,7 +13,7 @@ class Solution {
 public:
     int diameterOfBinaryTree(TreeNode* root) 
     {
-        int max = 0;
+        int max = 0; 
         
         findMax(root, max);
         
