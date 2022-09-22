@@ -21,6 +21,7 @@ public:
     int dfs(TreeNode* root, bool& res)
     {
         if (!root) return 0;
+        if (!res) return 0;
         
         int left = dfs(root->left, res);
         int right = dfs(root->right, res);
