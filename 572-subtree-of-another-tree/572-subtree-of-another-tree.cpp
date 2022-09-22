@@ -28,7 +28,7 @@ public:
             }   
             
             s.pop();
-            if (curr->left) s.push(curr->left);
+            if (curr->left)  s.push(curr->left);
             if (curr->right) s.push(curr->right);
         }
         
