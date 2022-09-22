@@ -2,20 +2,20 @@ class Solution {
 public:
     vector<int> plusOne(vector<int>& digits) 
     {
-        int carry = 0;
-        digits[digits.size()-1] += 1;
+        int carry = 1;
+        int i = digits.size() - 1;
         
-        for (int i = digits.size() - 1; i >= 0; i--)
+        while (carry != 0 && i >= 0)
         {
-            
             digits[i] += carry;
             carry = digits[i] / 10;
+            
             digits[i] %= 10;
-        
-            if (carry == 0) break;
+            
+            i--;
         }
         
-        if (carry > 0)
+        if (carry != 0)
             digits.insert(digits.begin(), carry);
         
         return digits;
