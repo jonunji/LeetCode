@@ -15,20 +15,19 @@ public:
     {
         int max = 0;
         
-        maxDepthHelper(root, 0, max);
+        findMax(root, max, 1);
         
         return max;
     }
     
-    void maxDepthHelper(TreeNode* root, int curr, int &max)
+    void findMax(TreeNode* root, int& max, int curr)
     {
-        if (root == NULL)
-        {
-            if (curr > max) max = curr;
-            
-            return;
-        }
-        maxDepthHelper(root->left, curr+1, max);
-        maxDepthHelper(root->right, curr+1, max);
+        if (!root) return;
+        
+        if (curr > max)
+            max = curr;
+        
+        findMax(root->left, max, curr+1);
+        findMax(root->right, max, curr+1);
     }
 };
