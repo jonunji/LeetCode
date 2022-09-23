@@ -16,7 +16,7 @@ public:
         // get top k from buckets
         for (int i = buckets.size() - 1; i >= 0; i--)
             for (int j = 0; j < buckets[i].size(); j++)
-            {
+            { 
                 res.push_back(buckets[i][j]);
                 if (res.size() == k) return res;
             }
