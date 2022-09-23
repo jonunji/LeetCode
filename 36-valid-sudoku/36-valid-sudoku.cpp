@@ -16,6 +16,6 @@ public:
                     if (box[i/3][j/3][num]++) return false;
                 }
         
-        return true;
+        return true; 
     }
 };
