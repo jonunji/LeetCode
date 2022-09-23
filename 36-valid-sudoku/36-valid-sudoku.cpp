@@ -2,42 +2,45 @@ class Solution {
 public:
     bool isValidSudoku(vector<vector<char>>& board) 
     {
-        set<char> nums; 
+        set<int> nums;
         
-        // checks the rows
+        // check the columns
         for (int i = 0; i < 9; i++)
         {
             for (int j = 0; j < 9; j++)
-                if (isdigit(board[i][j]))
-                    if (!nums.insert(board[i][j]).second)
-                        return false;
+                if (isdigit(board[i][j]) && !nums.insert(board[i][j] - '0').second)
+                    return false;
             
             nums.clear();
         }
         
-        // checks the columns
+        
+        // check the rows
+        nums.clear();
         for (int i = 0; i < 9; i++)
         {
             for (int j = 0; j < 9; j++)
-                if (isdigit(board[j][i]))
-                    if (!nums.insert(board[j][i]).second)
-                        return false;
+                if (isdigit(board[j][i]) && !nums.insert(board[j][i] - '0').second)
+                    return false;
             
             nums.clear();
         }
         
-        // checks the squares
-        for(int p = 0; p < 9; p += 3)
-            for (int i = 0; i < 9; i += 3)
+        // check the boxes
+        nums.clear();
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
             {
-                for (int j = 0; j < 3; j++)
-                    for (int k = 0; k < 3; k++)
-                        if (isdigit(board[j+i][k+p]))
-                            if (!nums.insert(board[j+i][k+p]).second)
-                                return false;
-
-                nums.clear();
+                int row = (i / 3 * 3) + (j / 3);
+                int col = (j % 3) + (i % 3 * 3);
+                
+                if (isdigit(board[row][col]) && !nums.insert(board[row][col] - '0').second)
+                    return false;
             }
+
+            nums.clear();
+        }
         
         return true;
     }
