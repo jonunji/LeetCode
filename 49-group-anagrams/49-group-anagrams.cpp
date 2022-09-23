@@ -3,6 +3,7 @@ public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) 
     {
         unordered_map<string, vector<string>> m;
+        vector<vector<string>> res;
         
         for (string s : strs)
         {
@@ -12,7 +13,7 @@ public:
             m[key].push_back(s);
         }
         
-        vector<vector<string>> res;
+        res.reserve(m.size());
         for (auto& anagrams : m)
             res.push_back(move(anagrams.second));
         
