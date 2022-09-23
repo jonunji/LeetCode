@@ -6,7 +6,7 @@ public:
         
         while (n)
         {
-            n = n & (n - 1);
+            n &= (n - 1);
             count++; 
         }
         
