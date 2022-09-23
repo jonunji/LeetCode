@@ -13,7 +13,7 @@ public:
             // Calculate the suffix
             res[nums.size() - i - 1] *= suf;
             suf *= nums[nums.size() - i - 1];
-        }
+        } 
         
         return res;
     }
