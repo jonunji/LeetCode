@@ -1,57 +1,36 @@
 class Solution {
 public:
-    
-    struct VectorHash {
-    size_t operator()(const std::vector<int>& v) const 
-    {
-        std::hash<int> hasher;
-        size_t seed = 0;
-        for (int i : v) {
-            seed ^= hasher(i) + 0x9e3779b9 + (seed<<6) + (seed>>2);
-        }
-        return seed;
-    }
-    };
-    
     vector<vector<int>> threeSum(vector<int>& nums) 
     {
-        vector<vector<int>> solutions;
-        int i, n = nums.size(), low, high;
-        
         sort(nums.begin(), nums.end());
         
-        for (i = 0; i < n; i++)
+        if (nums.size() < 3 || nums[0] > 0) return {};
+        
+        vector<vector<int>> res;
+        
+        for (int k = 0; k < nums.size(); k++) 
         {
-            low = i+1;
-            high = n-1;
-
-            while (low < high)
+            if (nums[k] > 0) break;
+            
+            int i = k + 1, j = nums.size() - 1;
+            
+            while (i < j)
             {
-                int currSum = nums[i] + nums[low] + nums[high];
-                
-                if (currSum == 0)
+                if ((nums[i] + nums[j] + nums[k]) < 0) i++;
+                else if ((nums[i] + nums[j] + nums[k]) > 0) j--;
+                else
                 {
-                    vector<int> triplet = {nums[i], nums[low], nums[high]};
-                    solutions.push_back(triplet);
+                    vector<int> curr{nums[k], nums[i], nums[j]};
+                    res.push_back(curr);
                     
-                    // Processing duplicates of Number 2
-                    // Rolling the front pointer to the next different number forwards
-                    while (low < high && nums[low] == triplet[1]) low++;
-
-                    // Processing duplicates of Number 3
-                    // Rolling the back pointer to the next different number backwards
-                    while (low < high && nums[high] == triplet[2]) high--;
+                    while (i < nums.size() && nums[i] == curr[1]) i++;
+                    while (j < nums.size() && nums[j] == curr[2]) j--;
                 }
-                
-                else if (currSum < 0)
-                    low++;
-                else 
-                    high--;
             }
             
-            while (i+1 < n && nums[i] == nums[i + 1]) i++;
+            while (k < nums.size() - 1 && nums[k] == nums[k+1]) k++;
         }
-
-        return solutions;
+        
+        return res;
     }
 };
