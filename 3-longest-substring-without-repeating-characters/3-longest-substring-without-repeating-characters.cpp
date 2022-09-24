@@ -6,13 +6,15 @@ public:
         int longest = 0;
         int left = 0, right = 0;
         
-        for (int i = 0; i < s.length(); i++)
+        while (right < s.length())
         {
-            if (seen.find(s[i]) != seen.end())
-                left = max(left, seen[s[i]] + 1);
+            char ch = s[right];
+            
+            if (seen.find(ch) != seen.end())
+                left = max(left, seen[ch] + 1);
             
             longest = max(longest, right - left + 1);
-            seen[s[i]] = i;
+            seen[ch] = right;
             right++;
         }
         
