@@ -14,25 +14,15 @@ public:
                 continue;
             }
             
-            
             long num2 = nums.top();
             nums.pop();
-
             long num1 = nums.top();
             nums.pop();
 
-            // cout << token << " " << num1 << " " << num2 << endl;
-            if (token[0] == '+')
-                num1 += num2;
-
-            if (token[0] == '-')
-                num1 -= num2;
-
-            if (token[0] == '*') 
-                num1 *= num2;
-            
-            if (token[0] == '/')
-                num1 /= num2;
+            if (token[0] == '+') num1 += num2;
+            if (token[0] == '-') num1 -= num2;
+            if (token[0] == '*') num1 *= num2;
+            if (token[0] == '/') num1 /= num2;
 
             nums.push(num1);
         }
