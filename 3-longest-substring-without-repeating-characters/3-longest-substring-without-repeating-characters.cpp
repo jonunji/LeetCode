@@ -3,8 +3,8 @@ public:
     int lengthOfLongestSubstring(string s) 
     {
         unordered_map<char, int> seen;
-        int longest = 0;
         int left = 0, right = 0;
+        int longest = 0;
         
         while (right < s.length())
         {
