@@ -8,8 +8,10 @@ public:
         
         for (int right = 0, left = 0; right < s.length(); right++)
         {
-            freq[s[right] - 'A']++;
-            mostFreqLetter = max(freq[s[right] - 'A'], mostFreqLetter);
+            int curr = s[right] - 'A';
+            
+            freq[curr]++;
+            mostFreqLetter = max(freq[curr], mostFreqLetter);
             
             int lettersToChange = (right - left + 1) - mostFreqLetter;
             if (lettersToChange > k)
