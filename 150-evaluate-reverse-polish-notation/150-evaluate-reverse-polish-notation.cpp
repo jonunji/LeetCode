@@ -14,15 +14,16 @@ public:
                 continue;
             }
             
-            long num2 = nums.top();
-            nums.pop();
-            long num1 = nums.top();
-            nums.pop();
-
-            if (token[0] == '+') num1 += num2;
-            if (token[0] == '-') num1 -= num2;
-            if (token[0] == '*') num1 *= num2;
-            if (token[0] == '/') num1 /= num2;
+            long num2 = nums.top(); nums.pop();
+            long num1 = nums.top(); nums.pop();
+            
+            switch (token[0])
+            {
+                case '+': num1 += num2; break;
+                case '-': num1 -= num2; break;
+                case '*': num1 *= num2; break;
+                case '/': num1 /= num2; break;
+            }
 
             nums.push(num1);
         }
