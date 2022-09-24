@@ -12,12 +12,16 @@ public:
         {
             if (nums[k] > 0) break;
             
-            int i = k + 1, j = nums.size() - 1;
+            int i = k + 1;
+            int j = nums.size() - 1;
+            int target = -nums[k];
             
             while (i < j)
             {
-                if ((nums[i] + nums[j] + nums[k]) < 0) i++;
-                else if ((nums[i] + nums[j] + nums[k]) > 0) j--;
+                int sum = nums[i] + nums[j];
+                
+                if (sum < target) i++;
+                else if (sum > target) j--;
                 else
                 {
                     vector<int> curr{nums[k], nums[i], nums[j]};
