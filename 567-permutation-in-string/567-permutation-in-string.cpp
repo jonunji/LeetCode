@@ -11,20 +11,17 @@ public:
         for (int right = 0, left = 0; right < s2.size(); right++)
         {
             int ch = s2[right] - 'a';
-            // cout << left <<"   " << right << "  " << s2[right] << "  " << freq[ch] << endl;
-            if (freq[ch] > 0)
-            {
-                freq[ch]--;
-            }
+
+            if (freq[ch] > 0) freq[ch]--;
+            
             else if (left != right)
             {
-                ++freq[s2[left++] - 'a'];
+                freq[s2[left] - 'a']++;
+                left++;
                 right--;
             }
-            else
-            {
-                left++;
-            }
+            
+            else left++;
             
             if ((right - left + 1) == s1.length()) return true;
         }
