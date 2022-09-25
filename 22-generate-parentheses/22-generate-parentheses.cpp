@@ -1,21 +1,31 @@
 class Solution {
 public:
-    
     vector<string> generateParenthesis(int n) 
     {
         vector<string> res;
-        helper(res, "", 0, 0, n);
+        string str;
+            
+        parentheses(res, str, n, n);
+        
         return res;
     }
     
-    void helper(vector<string> &res, string curr, int lpc, int rpc, int n)
+    void parentheses(vector<string>& res, string& str, int left, int right)
     {
-        if (rpc == n && lpc == n)
-            res.push_back(curr);
+        if (left == 0 && right == 0)
+        {
+            res.push_back(str);
+            return;
+        }
         
-        if (lpc < n)
-            helper(res, curr + "(", lpc + 1, rpc, n);
-        if (rpc < n && lpc > rpc)
-            helper(res, curr + ")", lpc, rpc + 1, n);
+        str.push_back('(');
+        if (left > 0) parentheses(res, str, left - 1, right);
+        
+        str.pop_back();
+        
+        str.push_back(')');
+        if (right > left) parentheses(res, str, left, right - 1);
+        
+        str.pop_back();
     }
 };
