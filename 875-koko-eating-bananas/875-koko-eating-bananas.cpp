@@ -22,7 +22,7 @@ public:
         int hours = 0;
         
         for (int pile : piles)
-            hours += ceil((double) pile / k);
+            hours += ceil(1.0 * pile / k);
         
         return hours <= h;
     }
