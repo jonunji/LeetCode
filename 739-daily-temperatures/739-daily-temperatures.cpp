@@ -9,7 +9,7 @@ public:
         {
             while (!s.empty() && temps[i] > temps[s.top()])
             {
-                res[s.top()] = i - s.top();
+                res[s.top()] = i - s.top(); 
                 s.pop();
             }
             
