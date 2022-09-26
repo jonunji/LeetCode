@@ -1,7 +1,7 @@
 class TimeMap {
 public:
     
-    unordered_map<string, map<int, string, greater<int>>> m;
+    unordered_map<string, map<int, string>> m;
     
     TimeMap() {
     }
@@ -15,8 +15,8 @@ public:
         auto keyIt = m.find(key);
         if (keyIt == m.end()) return "";
         
-        auto timeIt = m[key].lower_bound(timestamp);
-        return timeIt == m[key].end() ? "" : timeIt->second;        
+        auto timeIt = m[key].upper_bound(timestamp);
+        return timeIt == m[key].begin() ? "" : prev(timeIt)->second;        
     }
 };
 
