@@ -16,12 +16,15 @@ public:
         vector<int> right;
         queue<TreeNode*> q;
         
+        if (root == NULL) return right;
+        
         q.push(root);
-        q.push(NULL);
-        while (q.front())
+        while (!q.empty())
         {
             TreeNode* curr;
-            while (q.front())
+            
+            int size = q.size();
+            for (int i = 0; i < size; i++)
             {
                 curr = q.front();
                 
@@ -30,9 +33,6 @@ public:
                 
                 q.pop();
             }
-            // get rid of the NULL
-            q.pop();
-            q.push(NULL);
             
             right.push_back(curr->val);
         }
