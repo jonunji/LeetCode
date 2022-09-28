@@ -27,7 +27,7 @@ public:
         {
             currMax = root->val;
             count++;
-        }
+        } 
         
         countGood(root->left, currMax, count);
         countGood(root->right, currMax, count); 
