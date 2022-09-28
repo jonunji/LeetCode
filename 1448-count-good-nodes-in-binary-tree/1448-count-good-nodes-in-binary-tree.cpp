@@ -30,6 +30,6 @@ public:
         }
         
         countGood(root->left, currMax, count);
-        countGood(root->right, currMax, count);
+        countGood(root->right, currMax, count); 
     }
 };
