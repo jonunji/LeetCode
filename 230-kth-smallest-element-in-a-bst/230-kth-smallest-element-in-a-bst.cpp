@@ -25,7 +25,7 @@ public:
             
             root = s.top();
             if (--k == 0) break;
-            
+             
             s.pop();
             root = root->right;
         }
