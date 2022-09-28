@@ -15,7 +15,7 @@ public:
         while (p1 != p2)
         {
             p1 = !p1 ? B : p1->next;
-            p2 = !p2 ? A : p2->next; 
+            p2 = !p2 ? A : p2->next;  
         }
         
         return p1;
