@@ -11,15 +11,16 @@
  */
 class Solution {
 public:
+    int count = 0;
+    
     int goodNodes(TreeNode* root) 
     {
-        int count = 0;
-        countGood(root, root->val, count);
+        countGood(root, root->val);
         
         return count;
     }
     
-    void countGood(TreeNode* root, int currMax, int& count)
+    void countGood(TreeNode* root, int currMax)
     {
         if (root == NULL) return;
         
@@ -29,7 +30,7 @@ public:
             count++;
         } 
         
-        countGood(root->left, currMax, count);
-        countGood(root->right, currMax, count); 
+        countGood(root->left, currMax);
+        countGood(root->right, currMax); 
     }
 };
