@@ -18,15 +18,21 @@ public:
     
     TreeNode* build(vector<int>& pre, vector<int>& in, int preStart, int inStart, int inEnd)
     {
-        if (preStart >= pre.size() || inStart > inEnd) return NULL;
+        // if we are out of bounds, return
+        if (inStart > inEnd) return NULL;
         
-        TreeNode* curr = new TreeNode(pre[preStart]);
+        // make our new root node
+        TreeNode* root = new TreeNode(pre[preStart]);
+        
+        // find where our current root is in the inorder.
         int rootIdx = 0;
         while (pre[preStart] != in[rootIdx]) rootIdx++;
         
-        curr->left = build(pre, in, preStart + 1, inStart, rootIdx-1);
-        curr->right = build(pre, in, preStart + (rootIdx - inStart + 1), rootIdx + 1, inEnd); 
+        // left goes until we find the node in inorder
+        root->left = build(pre, in, preStart + 1, inStart, rootIdx-1);
+        // right goes from the node in inorder, to the end.
+        root->right = build(pre, in, preStart + (rootIdx - inStart + 1), rootIdx + 1, inEnd); 
         
-        return curr;
+        return root;
     }
 };
