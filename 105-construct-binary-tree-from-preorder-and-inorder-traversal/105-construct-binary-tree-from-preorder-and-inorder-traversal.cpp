@@ -13,26 +13,29 @@ class Solution {
 public:
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) 
     {
-        return build(preorder, inorder, 0, 0, inorder.size() - 1);
+        int root = 0;
+        return build(preorder, inorder, root, 0, inorder.size() - 1);
     }
     
-    TreeNode* build(vector<int>& pre, vector<int>& in, int preStart, int inStart, int inEnd)
+    TreeNode* build(vector<int>& pre, vector<int>& in, int& root, int inStart, int inEnd)
     {
         // if we are out of bounds, return
         if (inStart > inEnd) return NULL;
         
         // make our new root node
-        TreeNode* root = new TreeNode(pre[preStart]);
+        TreeNode* curr = new TreeNode(pre[root]);
         
         // find where our current root is in the inorder.
-        int rootIdx = 0;
-        while (pre[preStart] != in[rootIdx]) rootIdx++;
+        int pivot = 0;
+        while (pre[root] != in[pivot]) pivot++;
+        
+        root++;
         
         // left goes until we find the node in inorder
-        root->left = build(pre, in, preStart + 1, inStart, rootIdx-1);
+        curr->left = build(pre, in, root, inStart, pivot-1);
         // right goes from the node in inorder, to the end.
-        root->right = build(pre, in, preStart + (rootIdx - inStart + 1), rootIdx + 1, inEnd); 
+        curr->right = build(pre, in, root, pivot + 1, inEnd); 
         
-        return root;
+        return curr;
     }
 };
