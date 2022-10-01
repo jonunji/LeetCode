@@ -11,7 +11,7 @@ public:
         return res;
     }
     
-    void backtrack(vector<int>& nums, int target, int i, vector<int> curr)
+    void backtrack(vector<int>& nums, int target, int start, vector<int> curr)
     {
         if (target == 0)
         {
@@ -19,13 +19,14 @@ public:
             return;
         }
         
-        if (i >= nums.size() || target < 0) return;
+        if (target < 0) return;
         
 
-        curr.push_back(nums[i]);
-        backtrack(nums, target - nums[i], i, curr);
-        curr.pop_back();
-        
-        backtrack(nums, target, i+1, curr);
+        for (int i = start; i < nums.size(); i++)
+        {
+            curr.push_back(nums[i]);
+            backtrack(nums, target - nums[i], i, curr);
+            curr.pop_back();
+        }
     }  
 };
