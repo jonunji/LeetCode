@@ -4,13 +4,12 @@ public:
     {
         vector<vector<int>> res;
         vector<int> curr;
-        set<int> exists;
-        backtrack(nums, curr, res, exists);
+        backtrack(nums, curr, res);
         
         return res;
     }
     
-    void backtrack(vector<int>& nums, vector<int> curr, vector<vector<int>>& res, set<int> exists)
+    void backtrack(vector<int>& nums, vector<int> curr, vector<vector<int>>& res)
     {
         if (curr.size() == nums.size())
         {
@@ -21,14 +20,10 @@ public:
         for (int i = 0; i < nums.size(); i++)
         {
             // skip if element exists already
-            if (exists.find(nums[i]) != exists.end()) continue;
+            if (find(curr.begin(), curr.end(), nums[i]) != curr.end()) continue;
             
             curr.push_back(nums[i]);
-            exists.insert(nums[i]);
-            
-            backtrack(nums, curr, res, exists);
-             
-            exists.erase(nums[i]);
+            backtrack(nums, curr, res);
             curr.pop_back();
         }
     }
