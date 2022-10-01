@@ -27,5 +27,5 @@ public:
             backtrack(nums, target - nums[i], i, curr);
             curr.pop_back();
         }
-    }
+    } 
 };
