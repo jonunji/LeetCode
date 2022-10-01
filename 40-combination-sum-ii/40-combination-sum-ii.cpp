@@ -27,7 +27,7 @@ public:
             if (i > start && nums[i] == nums[i-1]) continue;
             
             curr.push_back(nums[i]);
-            backtrack(nums, target - nums[i], curr, res, i+1);
+            backtrack(nums, target - nums[i], curr, res, i+1);            
             curr.pop_back();
         }
     }
