@@ -11,7 +11,7 @@ public:
         for (char task : tasks) freq[task - 'A']++;
         // push frequencies onto maxheap
         for (int task : freq) if (task > 0) pq.push(task);
-        
+         
         while (!pq.empty() || !waiting.empty())
         {
             if (!pq.empty())
