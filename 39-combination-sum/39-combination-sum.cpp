@@ -1,28 +1,31 @@
 class Solution {
 public:
-    vector<vector<int>> combinationSum(vector<int>& candidates, int target) 
+    vector<vector<int>> res;
+    
+    vector<vector<int>> combinationSum(vector<int>& nums, int target) 
     {
-        sort(candidates.begin(), candidates.end());
-        vector<vector<int>> res;
-        vector<int> attempt;
-        comboSumHelper(candidates, res, target, attempt, 0);
+        vector<int> curr;
+        sort(nums.begin(), nums.end());
+        backtrack(nums, target, 0, curr);
         
         return res;
     }
     
-    void comboSumHelper(vector<int>& candidates, vector<vector<int>>& res, int target, vector<int> attempt, int i)
+    void backtrack(vector<int>& nums, int target, int start, vector<int> curr)
     {
         if (target == 0)
         {
-            res.push_back(attempt);
+            res.push_back(curr);
             return;
         }
         
-        for (; i < candidates.size() && target >= candidates[i]; i++)
+        if (target < 0) return;
+        
+        for (int i = start; i < nums.size(); i++)
         {
-            attempt.push_back(candidates[i]);
-            comboSumHelper(candidates, res, target - candidates[i], attempt, i);
-            attempt.pop_back();
+            curr.push_back(nums[i]);
+            backtrack(nums, target - nums[i], i, curr);
+            curr.pop_back();
         }
     }
 };
