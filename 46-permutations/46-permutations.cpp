@@ -4,28 +4,26 @@ public:
     {
         vector<vector<int>> res;
         vector<int> curr;
-        
-        permute(nums, res, curr);
+        backtrack(nums, curr, res);
         
         return res;
     }
     
-    void permute(vector<int> nums, vector<vector<int>>& res, vector<int> curr) 
+    void backtrack(vector<int>& nums, vector<int> curr, vector<vector<int>>& res)
     {
-        if (nums.empty())
+        if (curr.size() == nums.size())
+        {
             res.push_back(curr);
+            return;
+        }
         
-        vector<int> tempNums = nums;
         for (int i = 0; i < nums.size(); i++)
         {
-            swap(tempNums[nums.size() - 1], tempNums[i]);
-            tempNums.pop_back();
+            // skip if element exists already
+            if (find(curr.begin(), curr.end(), nums[i]) != curr.end()) continue;
+            
             curr.push_back(nums[i]);
-            
-            permute(tempNums, res, curr);
-            
-            tempNums.push_back(nums[i]);
-            swap(tempNums[nums.size() - 1], tempNums[i]);
+            backtrack(nums, curr, res);
             curr.pop_back();
         }
     }
