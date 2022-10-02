@@ -12,7 +12,7 @@ public:
             {
                 if (grid[r][c] == '1')
                 {
-                    dfs(grid, r, c);
+                    bfs(grid, r, c);
                     total++;
                 }
             }
@@ -39,7 +39,10 @@ public:
                 int c = curr.second + offset[k][1];
                 
                 if (valid(grid, r, c) && grid[r][c] == '1')
+                {
+                    grid[r][c] = '0';
                     q.push({r, c});
+                }
             }
         }
     }
