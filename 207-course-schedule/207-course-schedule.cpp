@@ -5,7 +5,7 @@ public:
         vector<vector<int>> adjList(n);
         vector<int> degree(n, 0);
         
-        for (auto p : pre)
+        for (auto const &p : pre)
         {
             degree[p[0]]++;
             adjList[p[1]].push_back(p[0]);
@@ -20,7 +20,7 @@ public:
         {
             int curr = q.front(); q.pop(); n--;
             
-            for (auto v : adjList[curr])
+            for (auto const &v : adjList[curr])
                 if (--degree[v] == 0) q.push(v);
         }
             
