@@ -50,15 +50,15 @@ public:
         return s.substr(start, maxLen);
     }
     
-    void extendPalindrome(string s, int i, int j)
+    void extendPalindrome(string s, int left, int right)
     {
-        while (i >= 0 && j < s.length() && s[i] == s[j]) 
-            i--, j++;
+        while (left >= 0 && right < s.length() && s[left] == s[right]) 
+            left--, right++;
         
-        if (j - i - 1 > maxLen) 
+        if (right - left - 1 > maxLen) 
         {
-            start = i + 1;
-            maxLen = j - i - 1;
+            start = left + 1;
+            maxLen = right - left - 1;
         }
     }
 };
