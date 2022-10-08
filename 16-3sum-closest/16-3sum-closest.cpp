@@ -2,49 +2,26 @@ class Solution {
 public:
     int threeSumClosest(vector<int>& nums, int target) 
     {
-        int closestSum = nums[0] + nums[1] + nums[2], n = nums.size();
-        int i, low, high;
-        bool trackersMoved;
-        
         sort(nums.begin(), nums.end());
+        int n = nums.size(), closest = 1e9;
         
-        for (i = 0; i < n - 2; i++)
+        for (int k = 0; k < n; k++)
         {
-            low = i + 1;
-            high = n-1;
+            int i = k+1, j = n-1;
             
-            trackersMoved = true;
-            
-            while (trackersMoved)
+            while (i < j)
             {
-                trackersMoved = false;
-                int currSum = nums[i] + nums[low] + nums[high];
+                int sum = nums[k] + nums[i] + nums[j];
+
+                if (abs(target - sum) < abs(closest - target)) 
+                    closest = sum;
                 
-                // cout << currSum << "    " << i << " " << low << " " << high << endl;
-                if (abs(target - currSum) < abs(target - closestSum))
-                {
-                    closestSum = currSum;    
-                    if (closestSum == target) return closestSum;
-                }
-                
-                if (currSum < target)
-                {
-                    if (low + 1 != high)
-                    {
-                        trackersMoved = true;
-                        low++;
-                    }
-                }
-                else
-                    if (high - 1 != low)
-                    {
-                        trackersMoved = true;
-                        high--;
-                    }
-                
+                if (sum < target) i++;
+                else if (sum > target) j--;
+                else return sum;
             }
         }
-    
-        return closestSum;
+        
+        return closest;
     }
 };
