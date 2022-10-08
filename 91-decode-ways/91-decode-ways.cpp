@@ -1,29 +1,24 @@
 class Solution {
 public:
     
-    vector<int> memo;
-    
     int numDecodings(string s) 
     {
         int n = s.length();
         
-        memo = vector<int>(n + 1, -1);
-        memo[n] = 1;
-        return count(s, 0);
-    }
-    
-    int count(string s, int i)
-    {
-        int n = s.length();
+        vector<int> dp(n + 1, -1);
+        dp[n] = 1;
         
-        if (memo[i] > -1) return memo[i];
-        if (s[i] == '0') return memo[i] = 0;
+        for (int i = n-1; i >= 0; i--)
+        {
+            if (s[i] == '0') dp[i] = 0;
+            else
+            {
+                dp[i] = dp[i+1];
+                if (i + 1 < n && (s[i] == '1' || (s[i] == '2' && s[i+1] < '7'))) 
+                    dp[i] += dp[i+2];
+            }
+        }
         
-        int res = count(s, i+1);
-        if (i + 1 < s.length() && 
-           (s[i] == '1' || (s[i] == '2' && s[i+1] < '7'))) 
-            res += count(s, i+2);
-    
-        return memo[i] = res;
+        return dp[0];
     }
 };
