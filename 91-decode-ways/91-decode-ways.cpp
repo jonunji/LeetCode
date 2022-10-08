@@ -3,22 +3,19 @@ public:
     
     int numDecodings(string s) 
     {
-        int n = s.length();
-        
-        vector<int> dp(n + 1, -1);
-        dp[n] = 1;
+        int dp1 = 1, dp2, n = s.length();
         
         for (int i = n-1; i >= 0; i--)
         {
-            if (s[i] == '0') dp[i] = 0;
-            else
-            {
-                dp[i] = dp[i+1];
-                if (i + 1 < n && (s[i] == '1' || (s[i] == '2' && s[i+1] < '7'))) 
-                    dp[i] += dp[i+2];
-            }
+            int curr = s[i] == '0' ? 0 : dp1;
+            
+            if (i + 1 < n && (s[i] == '1' || (s[i] == '2' && s[i+1] < '7'))) 
+                curr += dp2;
+            
+            dp2 = dp1;
+            dp1 = curr;
         }
         
-        return dp[0];
+        return dp1;
     }
 };
