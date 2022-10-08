@@ -13,13 +13,16 @@ public:
     }
     
     int count(string s, int i)
-    {        
+    {
+        int n = s.length();
+        
         if (memo[i] > -1) return memo[i];
         if (s[i] == '0') return memo[i] = 0;
         
         int res = count(s, i+1);
-        
-        if(i<s.size()-1 && (s[i]=='1'||s[i]=='2'&&s[i+1]<'7')) res += count(s, i+2);
+        if (i + 1 < s.length() && 
+           (s[i] == '1' || (s[i] == '2' && s[i+1] < '7'))) 
+            res += count(s, i+2);
     
         return memo[i] = res;
     }
