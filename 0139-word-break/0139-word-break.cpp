@@ -15,9 +15,9 @@ public:
             for (int j = i; j < n; j++)
             {
                 str += s[j];
-                cout <<str<< endl;
                 if (binary_search(wordDict.begin(), wordDict.end(), str))
-                    if (dp[i] = dp[j+1]) break;
+                    if (dp[i] = dp[j+1]) 
+                        break;
             }
         }
         
