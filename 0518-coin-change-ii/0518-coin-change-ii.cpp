@@ -17,7 +17,6 @@ public:
                 
                 if (i > 0) dp[i][j] += dp[i-1][j];
             }
-            cout << endl;
         }
         
         return dp[m-1][n];   
