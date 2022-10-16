@@ -5,7 +5,11 @@ public:
         int m = s1.length(), n = s2.length();
         if (m + n != s3.length()) return false;
         
-        vector<vector<bool>> dp(m+1, vector<bool>(n+1, false));
+        bool dp[m+1][n+1];
+        for (int i = 0; i <= m; i++)
+            for (int j = 0; j <= n; j++)
+                dp[i][j] = false;
+        
         dp[m][n] = true;
         
         for (int i = m; i >= 0; i--) 
