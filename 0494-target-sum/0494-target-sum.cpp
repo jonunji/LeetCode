@@ -12,8 +12,8 @@ public:
         {
             dp[i][0] = 0;
             
-            dp[i][0] += i-sum == -nums[0] ? 1 : 0;
-            dp[i][0] += i-sum == nums[0] ? 1 : 0;
+            dp[i][0] += i-sum == -nums[0];
+            dp[i][0] += i-sum == nums[0];
         }
         
         for (int j = 1; j < n; j++)
