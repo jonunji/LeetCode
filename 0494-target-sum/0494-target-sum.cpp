@@ -27,6 +27,8 @@ public:
                 
                 if (pos < m)  dp[s][j] += dp[pos][j-1];
                 if (neg >= 0) dp[s][j] += dp[neg][j-1];
+                
+                if (i == target && j == n-1) return dp[s][j];
             }
         
         return dp[target + sum][n-1];
