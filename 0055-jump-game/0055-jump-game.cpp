@@ -16,6 +16,7 @@ public:
 //         return false;
 //     }
     
+    // Greedy solution
     bool canJump(vector<int>& nums) 
     {
         int n = nums.size(), end = n-1;
