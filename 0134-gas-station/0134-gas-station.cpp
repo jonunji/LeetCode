@@ -6,8 +6,9 @@ public:
         
         for (int i = 0; i < gas.size(); i++)
         {
-            total += gas[i] - cost[i];
-            curGas += gas[i] - cost[i];
+            int g = gas[i] - cost[i];
+            total += g;
+            curGas += g;
             
             if (curGas < 0)
             {
