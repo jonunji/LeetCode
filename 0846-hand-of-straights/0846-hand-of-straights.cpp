@@ -6,7 +6,7 @@ public:
         
         map<int, int> freq;
         for (int const& card : hand) freq[card]++;
-        map<int, int>::iterator it = freq.begin();
+        auto it = freq.begin();
         
         while (it != freq.end())
         {
