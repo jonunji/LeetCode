@@ -9,8 +9,8 @@ public:
         {
             for (int i = 0; i < right - left; i++)
             {
-                int top = left, bottom = right;
-                int topLeft = matrix[top][left + i];
+                int top = left, bottom = right,
+                    topLeft = matrix[top][left + i];
 
                 // top left
                 matrix[top][left + i] = matrix[bottom - i][left];
